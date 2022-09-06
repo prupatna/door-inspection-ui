@@ -1,0 +1,327 @@
+{
+  "complaint": [
+    "Compliant",
+    "Not Compliant",
+    "N/A",
+    "Unable to inspect"
+  ],
+  "fireRating": [
+    "20MIN",
+    "45MIN",
+    "60MIN",
+    "90MIN",
+    "180MIN",
+    "Non-Rated"
+  ],
+  "doorCategory": [
+    "Fire Rated",
+    "Life Safety",
+    "Smoke Partition",
+    "Non-rated"
+  ],
+  "frame": [
+    "Metal",
+    "Timely",
+    "Wood",
+    "Aluminum",
+    "Stainless Steel",
+    "All Glass"
+  ],
+  "doorType": [
+    "Metal",
+    "Wood Paint",
+    "Pocket Wd Paint",
+    "PLAM",
+    "Pocket PLAM",
+    "Veneer",
+    "Pocket Veneer",
+    "Alum/Glass",
+    "Special-Lite",
+    "Balanced",
+    "Rite Door",
+    "Total Door",
+    "All Glass ",
+    "Stainless Steel",
+    "Eliason"
+  ],
+  "size": [],
+  "visionLite": [
+    "Yes",
+    "No"
+  ],
+  "transom": [
+    "Metal",
+    "Wood",
+    "Mullion",
+    "Glass"
+  ],
+  "sideLite": [
+    "Yes",
+    "No"
+  ],
+  "hinges": [
+    "PB-Steel-STD",
+    "PB-Brass-STD",
+    "BB/CB-Steel-STD",
+    "WT-BB/CB-Steel-STD",
+    "BB/CB-Stainless Steel-STD",
+    "BB/CB-Brass-STD",
+    "BB/CB Steel Full Surface",
+    "BB/CB-Steel-HW",
+    "BB/CB-Stainless Steel-HW",
+    "BB/CB-Brass-HW",
+    "ETW-Steel-STD",
+    "ETW-Stainless Steel-STD",
+    "ETW-Brass-STD",
+    "ETW-Steel-HW",
+    "ETW-Stainless Steel-HW",
+    "ETW-Brass-HW",
+    "Spring Steel",
+    "Cam Lift",
+    "2 Door Bi-fold",
+    "4 Door Bi-fold",
+    "2 Door Bi-pass",
+    "Muilti Door Bi-pass",
+    "Track Hardware"
+  ],
+  "hingeSize": [
+    "3.5",
+    "4",
+    "4.5",
+    "5",
+    "5.5",
+    "6",
+    "Other"
+  ],
+  "continuousHinge": [
+    "FM Gear",
+    "WT-FM Gear",
+    "HS Gear",
+    "FS Gear",
+    "FM Pin",
+    "HS Pin",
+    "FS Pin",
+    "Full Channel"
+  ],
+  "pivots": [
+    "Offset",
+    "Center Hung",
+    "Intermediate",
+    "Pocket"
+  ],
+  "powerTransfer": [
+    "EPT",
+    "PT-5",
+    "Wire Loop",
+    "Built In hinge"
+  ],
+  "lockSet": [
+    "Mortise AD400",
+    "Mortise AD200",
+    "Mortise Corbin",
+    "Mortise Eplex",
+    "Mortise Falcon",
+    "Mortise IN120",
+    "Mortise Locknetics",
+    "Mortise OMNI",
+    "Mortise Schlage",
+    "Mortise Yale",
+    "Cylindrical AD400",
+    "Cylindrical AD200",
+    "Cylindrical Best",
+    "Cylindrical Corbin",
+    "Cylindrical Eplex",
+    "Cylindrical Falcon",
+    "Cylindrical IN120",
+    "Cylindrical Locknetics",
+    "Cylindrical Marks",
+    "Cylindrical Medeco",
+    "Cylindrical OMNI",
+    "Cylindrical Schlage",
+    "Cylindrical Yale",
+    "Cylindrical Hospital Latch 2-3/4\" BS",
+    "Cylindrical Hospital Latch 5\" BS",
+    "Adams Rite",
+    "Deadbolt",
+    "Integrated w/lever",
+    "Integrated w/Push Pad",
+    "Mag Lock",
+    "Padlock",
+    "Pocket door lock",
+    "Unit Lock",
+    "Residential Lock",
+    "Other"
+  ],
+  "electricLockSet": [
+    "Yes",
+    "Electric Strike",
+    "Hi Tower",
+    "No"
+  ],
+  "strike": [
+    "ASA",
+    "T",
+    "Residential",
+    "Custom"
+  ],
+  "exitDevice": [
+    "Rim",
+    "SVR",
+    "CVR",
+    "Mortise",
+    "Mort x SVR",
+    "Mort x CVR",
+    "E9975",
+    "Integrated",
+    "55",
+    "5527",
+    "5547",
+    "5575 x 5527",
+    "5575 x 5547",
+    "88",
+    "8827",
+    "8847",
+    "8875",
+    "8875 x 8827",
+    "8875 x 8847",
+    "Electric",
+    "Dummy ED/RX",
+    "Rim Tradional",
+    "Mortise Tradional",
+    "SVR Tradional"
+  ],
+  "electricExitDevice": [],
+  "mullion": [],
+  "trim": [
+    "AD400",
+    "AD200",
+    "Knob Trim",
+    "Lever Trim",
+    "OMNI",
+    "Electric Lever Trim",
+    "Pull",
+    "Flush Pull",
+    "Pull x T-turn"
+  ],
+  "delayEgress": [
+    "DE Exit Device",
+    "DE Mag Lock"
+  ],
+  "cylinder": [
+    "ASSA LFIC",
+    "ASSA CR IC ",
+    "Best SFIC",
+    "Corbin LFIC",
+    "Corbin STD",
+    "Falcon SFIC",
+    "Falcon STD",
+    "Kaba CR IC",
+    "Kaba SFIC",
+    "Medeco CR IC",
+    "Medeco LFIC",
+    "Medeco STD",
+    "Medeco STD/LFIC",
+    "E Medeco LFIC",
+    "Kaba CR IC",
+    "Kaba SFIC",
+    "Kaba STD",
+    "Schlage LFIC",
+    "Schlage SFIC",
+    "Schlage STD",
+    "Other"
+  ],
+  "closer": [
+    "Corbin",
+    "LCN",
+    "Norton",
+    "Pot Belly",
+    "OHC",
+    "Floor",
+    "Other"
+  ],
+  "electroMechanical": [],
+  "autoOperator": [
+    "Horton",
+    "LCN",
+    "Besam",
+    "Other"
+  ],
+  "wallPlate": [
+    "Wikk",
+    "6\" Square",
+    "Touchless"
+  ],
+  "pushPullPlate": [],
+  "coordinator": [
+    "Bar",
+    "Gravity"
+  ],
+  "flushBolts": [
+    "Auto",
+    "Semi Auto",
+    "Manual",
+    "Surface"
+  ],
+  "protectionPlate": [
+    "Yes",
+    "No"
+  ],
+  "magHolder": [
+    "Wall",
+    "Floor"
+  ],
+  "stop": [
+    "Wall",
+    "Floor",
+    "Roller",
+    "Overhead",
+    "Stop built-in closer",
+    "Residential"
+  ],
+  "silencer": [
+    "Yes",
+    "No"
+  ],
+  "astragal": [
+    "Flat",
+    "T",
+    "Meeting",
+    "Meeting Channel",
+    "Meeting Channel W/Flat"
+  ],
+  "sealSystem": [
+    "Stick-on",
+    "Extruded",
+    "Sound",
+    "Adjustable",
+    "STC",
+    "Built in frame"
+  ],
+  "sweepShoe": [
+    "Brush",
+    "Vinyl"
+  ],
+  "autoDrBottom": [
+    "Surface",
+    "Mortise"
+  ],
+  "threshold": [
+    "Saddle",
+    "Half Saddle",
+    "Carpet Separator",
+    "Offset",
+    "Ctr Hung",
+    "Ramp"
+  ],
+  "cardReader": [],
+  "dps": [],
+  "powerSupply": [],
+  "pim": [
+    "Yes",
+    "No"
+  ],
+  "onmiPortal": [],
+  "specialNotes": [],
+  "deficiency": [],
+  "deficiencyRepair": []
+}
