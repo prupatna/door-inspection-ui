@@ -1,3 +1,4 @@
+import React from 'react';
 import doorAttributes from '../common/doorAttributes.json';
 import Select from "react-select";
 import { useForm, Controller } from "react-hook-form";
