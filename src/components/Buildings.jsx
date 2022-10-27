@@ -5,7 +5,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form'
 import { useRef } from 'react';
-// import Floor from './Floors';
+
 const Building = (props) => {
     const [select, setSelected] = useState(() => "Building");
     const [update, setUpdate] = useState(true)

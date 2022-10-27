@@ -7,6 +7,7 @@ import localization from './localization/en-US.json';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import Building from './components/Buildings';
+import Format from './components/Format';
 
 function App() {
   window.bundle = localization;
@@ -15,8 +16,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/buildings"  element = {<Building/>} />
-          <Route path="/form"  element = {<Form/>} />
+          {/* <Route path="/buildings"  element = {<Building/>} /> */}
+          <Route path="/form"  element = {<Format/>} />
         </Routes>
       </BrowserRouter>
     </div>
