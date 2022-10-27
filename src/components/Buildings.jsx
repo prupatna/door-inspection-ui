@@ -10,7 +10,6 @@ const Building = (props) => {
     const [select, setSelected] = useState(() => "Building");
     const [update, setUpdate] = useState(true)
     const [optionList, setOptionList] = useState([])
-    const [floor, setFloor] = useState(() => false)
     const buildingref = useRef(null);
     const coderef = useRef(null);
     const floorsref = useRef(null);
@@ -64,11 +63,11 @@ const Building = (props) => {
 
     }
 
-    const handleChange = (bName) => {
+    const handleChange = (bId) => {
 
         // if (floor === true) {
-            console.log(bName)
-            // setFloor(false)
+        props.setFloorActive(bId)
+        // setFloor(false)
         // }
 
     }
@@ -89,7 +88,7 @@ const Building = (props) => {
                             <Dropdown.Item key={item.id} value={item.name} onClick={(e) => {
                                 setSelected(item.name)
                                 // setFloor(true)
-                                handleChange(item.name)
+                                handleChange(item.id)
                             }} >
                                 {item.name}
                             </Dropdown.Item>
