@@ -26,15 +26,13 @@ const Floor = (props) => {
     }, [optionList])
 
     const handleChange = (dId) => {
-
         props.setDoorActive(dId)
-
     }
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:5000/api/lockshop/floor', {
-                headers: {
+            .get('http://127.0.0.1:8000/api/lockshop/floor', {
+                params: {
                     "building_id": props.value
                 }
             })
@@ -57,14 +55,13 @@ const Floor = (props) => {
         let buildingId = props.value
         let floorId = parseInt(floorsId.current.value)
         console.log(floorId)
-        axios.post('http://127.0.0.1:5000/api/lockshop/floor', {
+        axios.post('http://127.0.0.1:8000/api/lockshop/floor', {
             "floor_no": floorId,
             "building_id": buildingId
         }).then(response => {
             floorsId.current.value = "";
             setUpdate(true)
         })
-
     }
 
 
