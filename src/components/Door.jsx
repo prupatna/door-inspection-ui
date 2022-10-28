@@ -35,8 +35,8 @@ const Door = (props) =>{
             .catch((error) => console.log(error));
     };
 
-    const handleChange = (dId) => {
-        props.setDoorActive(dId)
+    const handleChange = (item) => {
+        props.setAttributesActive(item)
     }
 
     useEffect(() => {
@@ -90,7 +90,7 @@ const Door = (props) =>{
                         optionList.map((item) => (
                             <Dropdown.Item key={item.door_no} value={item.door_name} onClick={(e) => {
                                 setSelected(item.door_name)
-                                handleChange(item.door_name)
+                                handleChange(item)
                             }} >
                                 {item.door_name}
                             </Dropdown.Item>
