@@ -24,7 +24,6 @@ const Building = (props) => {
             })
             .then((response) => {
                 const { data } = response;
-                console.log('reponse= ', response);
                 if (response.status === 200) {
                     setOptionList(prev => {
                         return [...data.result.building_data]

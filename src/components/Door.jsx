@@ -1,16 +1,12 @@
-import { useEffect, useState } from 'react';
-import Dropdown from 'react-bootstrap/Dropdown';
-import { Button } from 'react-bootstrap';
-import Form from 'react-bootstrap/Form'
-import { useRef } from 'react';
-import axios from 'axios';
+import { useEffect } from "react";
 
 
-const Floor = (props) => {
-    const [select, setSelected] = useState(() => "Floor");
+
+const Door = (props) =>{
+    const [select, setSelected] = useState(() => "Door");
     const [update, setUpdate] = useState(true)
     const [optionList, setOptionList] = useState([])
-    const floorsId = useRef(null);
+    const doorsId = useRef(null);
 
 
     useEffect(() => {
@@ -21,21 +17,18 @@ const Floor = (props) => {
         }
     }, [update])
 
+
     useEffect(() => {
         console.log('optionList:', optionList)
     }, [optionList])
 
-    const handleChange = (dId) => {
-
-        props.setDoorActive(dId)
-
-    }
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:5000/api/lockshop/floor', {
+            .get('http://127.0.0.1:5000/api/lockshop/door', {
                 headers: {
-                    "building_id": props.value
+                    "building_id": props.building_value,
+                    "floor_no": props.floor_value
                 }
             })
             .then((response) => {
@@ -43,7 +36,7 @@ const Floor = (props) => {
                 console.log('reponse= ', response);
                 if (response.status === 200) {
                     setOptionList(prev => {
-                        return [...data.result.floor_data]
+                        return [...data.result.floor_data]  /*Change Value*/
                     })
                 } else {
                     setOptionList(['test'])
@@ -52,21 +45,21 @@ const Floor = (props) => {
             .catch((error) => console.log(error));
     };
 
-    const addFloor = (e) => {
+
+    const addDoor = (e) => {
         e.preventDefault()
-        let buildingId = props.value
-        let floorId = parseInt(floorsId.current.value)
+        let doorsId = parseInt(doorsId.current.value)
         console.log(floorId)
-        axios.post('http://127.0.0.1:5000/api/lockshop/floor', {
-            "floor_no": floorId,
-            "building_id": buildingId
+        axios.post('http://127.0.0.1:5000/api/lockshop/door', {
+            "floor_no": props.floor_value,
+            "building_id": props.building_value,
+            "door_id": doorsId
         }).then(response => {
-            floorsId.current.value = "";
+            doorsId.current.value = "";
             setUpdate(true)
         })
 
     }
-
 
     return (
         <Dropdown>
@@ -79,7 +72,7 @@ const Floor = (props) => {
                 {
                     (optionList !== undefined) ?
                         optionList.map((item) => (
-                            <Dropdown.Item key={item.floor_no} value={item.floor_no} onClick={(e) => {
+                            <Dropdown.Item key={item.d} value={item.floor_no} onClick={(e) => {
                                 setSelected(item.floor_no)
                                 handleChange(item.floor_no)
                             }} >
@@ -91,8 +84,8 @@ const Floor = (props) => {
                 }
                 <Dropdown.Divider />
                 <Form>
-                    <Form.Control type="number" placeholder="Enter Floors" ref={floorsId} />
-                    <Button variant="primary" type="submit" onClick={(e) => addFloor(e)}>
+                    <Form.Control type="number" placeholder="Enter Door" ref={doorsId} />
+                    <Button variant="primary" type="submit" onClick={(e) => addDoor(e)}>
                         Submit
                     </Button>
                 </Form>
@@ -101,4 +94,4 @@ const Floor = (props) => {
     );
 }
 
-export default Floor;
+export default Door;
