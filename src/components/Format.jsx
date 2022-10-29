@@ -7,6 +7,8 @@ import DoorAstragal from './DoorAstragal';
 import DoorStop from './DoorStop';
 import DoorMagholder from './DoorMagHolder';
 import DoorFlushbolt from './DoorFlushbolt';
+import DoorCoordinator from './DoorCoordinator';
+import DoorCloser from './DoorCloser';
 
 const Format = (props) => {
 
@@ -61,7 +63,9 @@ const Format = (props) => {
             //<DoorAstragal astragal_id = {attributes["astragal_id"]}/>: <></>
             //<DoorStop stop_id = {attributes["stop_id"]}/>: <></>
             ///<DoorMagholder magholder_id = {attributes["mag_holder_id"]}/>: <></>
-            <DoorFlushbolt flushbolt_id = {attributes["flush_bolt_id"]}/>: <></>
+            //<DoorFlushbolt flushbolt_id = {attributes["flush_bolt_id"]}/>: <></>
+            //<DoorCoordinator coordinator_id = {attributes["coordinator_id"]}/>: <></>
+            <DoorCloser closer_id = {attributes["closer_id"]}/>: <></>
         }
         </>
     );
