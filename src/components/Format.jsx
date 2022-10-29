@@ -20,6 +20,8 @@ import DoorPivot from './DoorPivot';
 import DoorHinge from './DoorHinge';
 import DoorContinuoushinge from './DoorContinousHinge';
 import DoorTransom from './DoorTransom';
+import DoorType from './DoorType';
+import DoorFrame from './DoorFrame';
 
 const Format = (props) => {
 
@@ -87,7 +89,9 @@ const Format = (props) => {
             //<DoorPivot pivot_id = {attributes["pivot_id"]}/>: <></>
             //<DoorHinge hinge_id = {attributes["hinge_id"]}/>: <></>
             //<DoorContinuoushinge continuoushinge_id = {attributes["continous_hinge_id"]}/>: <></>
-            <DoorTransom transom_id = {attributes["transom_id"]}/>: <></>
+            //<DoorTransom transom_id = {attributes["transom_id"]}/>: <></>
+            //<DoorType type_id = {attributes["type_id"]}/>: <></>
+            <DoorFrame frame_id = {attributes["frame_id"]}/>: <></>
         }
         </>
     );
