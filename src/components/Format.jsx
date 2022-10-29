@@ -14,6 +14,9 @@ import DoorDelayegress from './DoorDelayEgress';
 import DoorTrim from './DoorTrim';
 import DoorExitdevice from './DoorExitDevice';
 import DoorStrike from './DoorStrike';
+import DoorElectriclockset from './DoorElectricLockSet';
+import DoorLockset from './DoorLockset';
+import DoorPivot from './DoorPivot';
 
 const Format = (props) => {
 
@@ -75,7 +78,10 @@ const Format = (props) => {
             //<DoorDelayegress delayegress_id = {attributes["delay_egress_id"]}/>: <></>
             //<DoorTrim trim_id = {attributes["trim_id"]}/>: <></>
             //<DoorExitdevice exitdevice_id = {attributes["exit_device_id"]}/>: <></>
-            <DoorStrike strike_id = {attributes["strike_id"]}/>: <></>
+            //<DoorStrike strike_id = {attributes["strike_id"]}/>: <></>
+            //<DoorElectriclockset electriclockset_id = {attributes["electric_lockset_id"]}/>: <></>
+            //<DoorLockset lockset_id = {attributes["lockset_id"]}/>: <></>
+            <DoorPivot pivot_id = {attributes["pivot_id"]}/>: <></>
         }
         </>
     );
