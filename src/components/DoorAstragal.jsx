@@ -6,16 +6,16 @@ import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form'
 import { useRef } from 'react';
 
-const Compliance = (props) => {
-    const [select, setSelected] = useState(() => "Select Compliance");
+const DoorAstragal = (props) => {
+    const [select, setSelected] = useState(() => "Select Astragal");
     const [update, setUpdate] = useState(true)
     const [optionList, setOptionList] = useState([])
-    const complianceref = useRef(null);
+    const astragalref = useRef(null);
 
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/doorcompliance', {
+            .get('http://127.0.0.1:8000/api/lockshop/doorastragal', {
             })
             .then((response) => {
                 const { data } = response;
@@ -33,15 +33,15 @@ const Compliance = (props) => {
 
     const fetchDataId = () => {
         axios
-        .get('http://127.0.0.1:8000/api/lockshop/doorcompliance', {
+        .get('http://127.0.0.1:8000/api/lockshop/doorastragal', {
             params: {
-                "id": props.compliance_id
+                "id": props.astragal_id
             }
         })
         .then((response) => {
             const { data } = response;
             if (response.status === 200) {
-                setSelected (data.result.data.name)
+                setSelected (data.result.data.type)
             } else {
                 setSelected ("None")
             }
@@ -60,12 +60,12 @@ const Compliance = (props) => {
 
     const addBuilding = (e) => {
         e.preventDefault()
-        let complianceName = complianceref.current.value
+        let astragalName = astragalref.current.value
         
-        axios.post('http://127.0.0.1:8000/api/lockshop/doorcompliance', {
-            "name": complianceName,
+        axios.post('http://127.0.0.1:8000/api/lockshop/doorastragal', {
+            "type": astragalName,
         }).then(response => {
-            complianceref.current.value = "";
+            astragalref.current.value = "";
             setUpdate(true)
         })
 
@@ -74,7 +74,7 @@ const Compliance = (props) => {
     const handleChange = (bId) => {
 
         // if (floor === true) {
-        // props.setFloorActive(bId)
+        //props.setFloorActive(bId)
         // setFloor(false)
         // setFloor(false)
         // }
@@ -94,12 +94,12 @@ const Compliance = (props) => {
                 {
                     (optionList !== undefined) ?
                         optionList.map((item) => (
-                            <Dropdown.Item key={item.id} value={item.name} onClick={(e) => {
-                                setSelected(item.name)
+                            <Dropdown.Item key={item.id} value={item.type} onClick={(e) => {
+                                setSelected(item.type)
                                 // setFloor(true)
                                 handleChange(item.id)
                             }} >
-                                {item.name}
+                                {item.type}
                             </Dropdown.Item>
                         ))
                         :
@@ -107,14 +107,10 @@ const Compliance = (props) => {
                 }
                 <Dropdown.Divider />
                 <Form>
-                    {/* <Form.Control type="text" placeholder="Enter Compliance" ref={complianceref} />
-                    <Button variant="primary" type="submit" onClick={(e) => addBuilding(e)}>
-                        Submit
-                    </Button> */}
                 </Form>
             </Dropdown.Menu>
         </Dropdown>
     );
 }
 
-export default Compliance
+export default DoorAstragal
