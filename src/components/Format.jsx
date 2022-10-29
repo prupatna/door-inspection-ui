@@ -4,6 +4,7 @@ import Floor from "./Floors";
 import Door from './Door';
 import Compliance from './ComplianceId'
 import DoorAstragal from './DoorAstragal';
+import DoorStop from './DoorStop';
 
 const Format = (props) => {
 
@@ -55,7 +56,8 @@ const Format = (props) => {
         {
             (attributesBool !== "")?
             //<Compliance compliance_id = {attributes["compliance_id"]} /> &&
-            <DoorAstragal astragal_id = {attributes["astragal_id"]}/>: <></>
+            //<DoorAstragal astragal_id = {attributes["astragal_id"]}/>: <></>
+            <DoorStop stop_id = {attributes["stop_id"]}/>: <></>
         }
         </>
     );
