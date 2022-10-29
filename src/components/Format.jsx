@@ -6,6 +6,7 @@ import Compliance from './ComplianceId'
 import DoorAstragal from './DoorAstragal';
 import DoorStop from './DoorStop';
 import DoorMagholder from './DoorMagHolder';
+import DoorFlushbolt from './DoorFlushbolt';
 
 const Format = (props) => {
 
@@ -59,7 +60,8 @@ const Format = (props) => {
             //<Compliance compliance_id = {attributes["compliance_id"]} /> &&
             //<DoorAstragal astragal_id = {attributes["astragal_id"]}/>: <></>
             //<DoorStop stop_id = {attributes["stop_id"]}/>: <></>
-            <DoorMagholder magholder_id = {attributes["mag_holder_id"]}/>: <></>
+            ///<DoorMagholder magholder_id = {attributes["mag_holder_id"]}/>: <></>
+            <DoorFlushbolt flushbolt_id = {attributes["flush_bolt_id"]}/>: <></>
         }
         </>
     );
