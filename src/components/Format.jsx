@@ -17,6 +17,9 @@ import DoorStrike from './DoorStrike';
 import DoorElectriclockset from './DoorElectricLockSet';
 import DoorLockset from './DoorLockset';
 import DoorPivot from './DoorPivot';
+import DoorHinge from './DoorHinge';
+import DoorContinuoushinge from './DoorContinousHinge';
+import DoorTransom from './DoorTransom';
 
 const Format = (props) => {
 
@@ -81,7 +84,10 @@ const Format = (props) => {
             //<DoorStrike strike_id = {attributes["strike_id"]}/>: <></>
             //<DoorElectriclockset electriclockset_id = {attributes["electric_lockset_id"]}/>: <></>
             //<DoorLockset lockset_id = {attributes["lockset_id"]}/>: <></>
-            <DoorPivot pivot_id = {attributes["pivot_id"]}/>: <></>
+            //<DoorPivot pivot_id = {attributes["pivot_id"]}/>: <></>
+            //<DoorHinge hinge_id = {attributes["hinge_id"]}/>: <></>
+            //<DoorContinuoushinge continuoushinge_id = {attributes["continous_hinge_id"]}/>: <></>
+            <DoorTransom transom_id = {attributes["transom_id"]}/>: <></>
         }
         </>
     );
