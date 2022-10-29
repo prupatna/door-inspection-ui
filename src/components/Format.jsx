@@ -9,6 +9,11 @@ import DoorMagholder from './DoorMagHolder';
 import DoorFlushbolt from './DoorFlushbolt';
 import DoorCoordinator from './DoorCoordinator';
 import DoorCloser from './DoorCloser';
+import DoorCylinder from './DoorCylinder';
+import DoorDelayegress from './DoorDelayEgress';
+import DoorTrim from './DoorTrim';
+import DoorExitdevice from './DoorExitDevice';
+import DoorStrike from './DoorStrike';
 
 const Format = (props) => {
 
@@ -65,7 +70,12 @@ const Format = (props) => {
             ///<DoorMagholder magholder_id = {attributes["mag_holder_id"]}/>: <></>
             //<DoorFlushbolt flushbolt_id = {attributes["flush_bolt_id"]}/>: <></>
             //<DoorCoordinator coordinator_id = {attributes["coordinator_id"]}/>: <></>
-            <DoorCloser closer_id = {attributes["closer_id"]}/>: <></>
+            //<DoorCloser closer_id = {attributes["closer_id"]}/>: <></>
+            //<DoorCylinder cylinder_id = {attributes["cylinder_id"]}/>: <></>
+            //<DoorDelayegress delayegress_id = {attributes["delay_egress_id"]}/>: <></>
+            //<DoorTrim trim_id = {attributes["trim_id"]}/>: <></>
+            //<DoorExitdevice exitdevice_id = {attributes["exit_device_id"]}/>: <></>
+            <DoorStrike strike_id = {attributes["strike_id"]}/>: <></>
         }
         </>
     );
