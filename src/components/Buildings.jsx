@@ -75,7 +75,7 @@ const Building = (props) => {
     }, [optionList])
     return (
         <Dropdown>
-            <Dropdown.Toggle variant="light" id="dropdown-basic" value="Building" >
+            <Dropdown.Toggle variant="light" id="dropdown-basic" >
                {select}
             </Dropdown.Toggle>
             <Dropdown.Menu

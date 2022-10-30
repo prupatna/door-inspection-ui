@@ -64,23 +64,20 @@ const Format = (props) => {
 
     return(
         <>
-        <Button variant="contained">Hello World</Button>
-        <div className='row'>
-            <h3 className='left-panel'>Building</h3>
-            <div className='right-panel'>
-                <Building setFloorActive = {handleFloorCallback}/>
-            </div>
+        <h1 className='title'> Door Inspector </h1> 
+        <div className='TopWidth' >
+            <Building setFloorActive = {handleFloorCallback}/>
+            {
+                (floor !== "") ?
+                <Floor value = {floor} setDoorActive = {handleDoorCallback}/> :
+                <></>
+            }
+            {
+                (door !== "") ? 
+                <Door building_value = {floor} floor_value = {door} setAttributesActive = {handleAttributesCallback}/> :
+                <></>
+            }
         </div>
-        {
-            (floor !== "") ?
-            <Floor value = {floor} setDoorActive = {handleDoorCallback}/> :
-            <></>
-        }
-        {
-            (door !== "") ? 
-            <Door building_value = {floor} floor_value = {door} setAttributesActive = {handleAttributesCallback}/> :
-            <></>
-        }
         {
             (attributesBool !== "")?
             <div className='content-container'>

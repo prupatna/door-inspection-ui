@@ -9,11 +9,14 @@
 .right-panel {
     flex:5
 }
-.box {
-    border: 1px solid black;
+.TopWidth {
+    padding: 50px;
+    background-color: #990000;
+    border: 1px solid #FFCC00;
 }
-.boxForm {
-    display: inline-block;
+.title {
+    padding: 20px;
+    background-color: #FFCC00;
 }
 .row {
     display: flex;
