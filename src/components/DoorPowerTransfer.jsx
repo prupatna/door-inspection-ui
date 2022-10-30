@@ -6,28 +6,24 @@ import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form'
 import { useRef } from 'react';
 
-const Building = (props) => {
-    const [select, setSelected] = useState(() => "Building");
+const DoorPowertransfer = (props) => {
+    const [select, setSelected] = useState(() => "Select powertransfer");
     const [update, setUpdate] = useState(true)
     const [optionList, setOptionList] = useState([])
-    const buildingref = useRef(null);
-    const coderef = useRef(null);
-    const floorsref = useRef(null);
+    const powertransferref = useRef(null);
 
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/building', {
-                headers: {
-                    'Access-Control-Allow-Origin': '*'
-                }
+            .get('http://127.0.0.1:8000/api/lockshop/doorpowertransfer', {
             })
             .then((response) => {
                 const { data } = response;
                 if (response.status === 200) {
                     setOptionList(prev => {
-                        return [...data.result.building_data]
-                    })
+                        return [...data.result.data]
+                    }
+                    )
                 } else {
                     setOptionList(['test'])
                 }
@@ -35,8 +31,27 @@ const Building = (props) => {
             .catch((error) => console.log(error));
     };
 
+    const fetchDataId = () => {
+        axios
+        .get('http://127.0.0.1:8000/api/lockshop/doorpowertransfer', {
+            params: {
+                "id": props.powertransfer_id
+            }
+        })
+        .then((response) => {
+            const { data } = response;
+            if (response.status === 200) {
+                setSelected (data.result.data.type)
+            } else {
+                setSelected ("None")
+            }
+        })
+        .catch((error) => console.log(error));
+    };
+
     useEffect(() => {
         // fetchData();
+        fetchDataId ();
         if (update === true) {
             fetchData();
             setUpdate(false);
@@ -45,18 +60,12 @@ const Building = (props) => {
 
     const addBuilding = (e) => {
         e.preventDefault()
-        let buildingName = buildingref.current.value
-        // let codeName = coderef.current.value
-        let floorNumber = floorsref.current.value
-
-        axios.post('http://127.0.0.1:8000/api/lockshop/building', {
-            "name": buildingName,
-            "code": buildingName,
-            "no_of_floors": floorNumber
+        let powertransferName = powertransferref.current.value
+        
+        axios.post('http://127.0.0.1:8000/api/lockshop/doorpowertransfer', {
+            "type": powertransferName,
         }).then(response => {
-            buildingref.current.value = "";
-            coderef.current.value = "";
-            floorsref.current.value = "";
+            powertransferref.current.value = "";
             setUpdate(true)
         })
 
@@ -65,7 +74,8 @@ const Building = (props) => {
     const handleChange = (bId) => {
 
         // if (floor === true) {
-        props.setFloorActive(bId)
+        //props.setFloorActive(bId)
+        // setFloor(false)
         // setFloor(false)
         // }
 
@@ -75,8 +85,8 @@ const Building = (props) => {
     }, [optionList])
     return (
         <Dropdown>
-            <Dropdown.Toggle variant="light" id="dropdown-basic" value="Building" >
-               {select}
+            <Dropdown.Toggle variant="light" id="dropdown-basic"  >
+                {select}
             </Dropdown.Toggle>
             <Dropdown.Menu
                 disabled={false}
@@ -84,12 +94,12 @@ const Building = (props) => {
                 {
                     (optionList !== undefined) ?
                         optionList.map((item) => (
-                            <Dropdown.Item key={item.id} value={item.name} onClick={(e) => {
-                                setSelected(item.name)
+                            <Dropdown.Item key={item.id} value={item.type} onClick={(e) => {
+                                setSelected(item.type)
                                 // setFloor(true)
                                 handleChange(item.id)
                             }} >
-                                {item.name}
+                                {item.type}
                             </Dropdown.Item>
                         ))
                         :
@@ -97,16 +107,10 @@ const Building = (props) => {
                 }
                 <Dropdown.Divider />
                 <Form>
-                    <Form.Control type="text" placeholder="Enter Building" ref={buildingref} />
-                    <Form.Control type="text" placeholder="Enter Code" ref={coderef} />
-                    <Form.Control type="number" placeholder="Enter Floors" ref={floorsref} />
-                    <Button variant="primary" type="submit" onClick={(e) => addBuilding(e)}>
-                        Submit
-                    </Button>
                 </Form>
             </Dropdown.Menu>
         </Dropdown>
     );
 }
 
-export default Building
+export default DoorPowertransfer

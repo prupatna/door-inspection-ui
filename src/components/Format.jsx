@@ -22,6 +22,11 @@ import DoorContinuoushinge from './DoorContinousHinge';
 import DoorTransom from './DoorTransom';
 import DoorType from './DoorType';
 import DoorFrame from './DoorFrame';
+import DoorFirerating from './DoorFireRating';
+import DoorCategory from './DoorCategory';
+import DoorPowertransfer from './DoorPowerTransfer';
+import Button from '@mui/material/Button';
+import '../HomePage.css'
 
 const Format = (props) => {
 
@@ -59,7 +64,13 @@ const Format = (props) => {
 
     return(
         <>
-        <Building setFloorActive = {handleFloorCallback}/>
+        <Button variant="contained">Hello World</Button>
+        <div className='row'>
+            <h3 className='left-panel'>Building</h3>
+            <div className='right-panel'>
+                <Building setFloorActive = {handleFloorCallback}/>
+            </div>
+        </div>
         {
             (floor !== "") ?
             <Floor value = {floor} setDoorActive = {handleDoorCallback}/> :
@@ -72,26 +83,38 @@ const Format = (props) => {
         }
         {
             (attributesBool !== "")?
-            //<Compliance compliance_id = {attributes["compliance_id"]} /> &&
-            //<DoorAstragal astragal_id = {attributes["astragal_id"]}/>: <></>
-            //<DoorStop stop_id = {attributes["stop_id"]}/>: <></>
-            ///<DoorMagholder magholder_id = {attributes["mag_holder_id"]}/>: <></>
-            //<DoorFlushbolt flushbolt_id = {attributes["flush_bolt_id"]}/>: <></>
-            //<DoorCoordinator coordinator_id = {attributes["coordinator_id"]}/>: <></>
-            //<DoorCloser closer_id = {attributes["closer_id"]}/>: <></>
-            //<DoorCylinder cylinder_id = {attributes["cylinder_id"]}/>: <></>
-            //<DoorDelayegress delayegress_id = {attributes["delay_egress_id"]}/>: <></>
-            //<DoorTrim trim_id = {attributes["trim_id"]}/>: <></>
-            //<DoorExitdevice exitdevice_id = {attributes["exit_device_id"]}/>: <></>
-            //<DoorStrike strike_id = {attributes["strike_id"]}/>: <></>
-            //<DoorElectriclockset electriclockset_id = {attributes["electric_lockset_id"]}/>: <></>
-            //<DoorLockset lockset_id = {attributes["lockset_id"]}/>: <></>
-            //<DoorPivot pivot_id = {attributes["pivot_id"]}/>: <></>
-            //<DoorHinge hinge_id = {attributes["hinge_id"]}/>: <></>
-            //<DoorContinuoushinge continuoushinge_id = {attributes["continous_hinge_id"]}/>: <></>
-            //<DoorTransom transom_id = {attributes["transom_id"]}/>: <></>
-            //<DoorType type_id = {attributes["type_id"]}/>: <></>
-            <DoorFrame frame_id = {attributes["frame_id"]}/>: <></>
+            <div className='content-container'>
+                <div className='row'>
+                    <div className='left-panel box'>
+                        <Compliance compliance_id = {attributes["compliance_id"]} />
+                        <DoorAstragal astragal_id = {attributes["astragal_id"]}/>
+                        <DoorStop stop_id = {attributes["stop_id"]}/>
+                        <DoorMagholder magholder_id = {attributes["mag_holder_id"]}/>
+                        <DoorFlushbolt flushbolt_id = {attributes["flush_bolt_id"]}/>
+                        <DoorCoordinator coordinator_id = {attributes["coordinator_id"]}/>
+                        <DoorCloser closer_id = {attributes["closer_id"]}/>
+                        <DoorCylinder cylinder_id = {attributes["cylinder_id"]}/>
+                        <DoorDelayegress delayegress_id = {attributes["delay_egress_id"]}/>
+                        <DoorTrim trim_id = {attributes["trim_id"]}/>
+                        <DoorExitdevice exitdevice_id = {attributes["exit_device_id"]}/>
+                        <DoorStrike strike_id = {attributes["strike_id"]}/>
+                    </div>
+                    <div className='right-panel box'>
+                        <DoorElectriclockset electriclockset_id = {attributes["electric_lockset_id"]}/>
+                        <DoorLockset lockset_id = {attributes["lockset_id"]}/>
+                        <DoorPivot pivot_id = {attributes["pivot_id"]}/>
+                        <DoorHinge hinge_id = {attributes["hinge_id"]}/>
+                        <DoorContinuoushinge continuoushinge_id = {attributes["continous_hinge_id"]}/>
+                        <DoorTransom transom_id = {attributes["transom_id"]}/>
+                        <DoorType type_id = {attributes["type_id"]}/>
+                        <DoorFrame frame_id = {attributes["frame_id"]}/>
+                        <DoorFirerating firerating_id = {attributes["fire_rating_id"]}/>
+                        <DoorCategory category_id = {attributes["category_id"]}/>
+                        <DoorPowertransfer powertransfer_id = {attributes["power_transfer_id"]}/>
+                    </div>
+                </div>
+            </div>: <></>
+
         }
         </>
     );
