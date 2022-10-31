@@ -79,6 +79,7 @@ const DoorAstragal = (props) => {
         // setFloor(false)
         // }
 
+        props.handler (bId)
     }
     useEffect(() => {
         console.log('optionList:', optionList)

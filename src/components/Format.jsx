@@ -27,26 +27,15 @@ import DoorCategory from './DoorCategory';
 import DoorPowertransfer from './DoorPowerTransfer';
 import Button from '@mui/material/Button';
 import '../HomePage.css'
+import { ButtonBase, ButtonGroup } from '@mui/material';
 
 const Format = (props) => {
 
 
     const [floor, setFloor] = useState("")
     const [door,setDoor] = useState("")
-    const[complianceId, setcomplianceId] = useState("")
     const[attributesBool, setAttributesBool] = useState ("")
-    const [attributes, setAttributes] = useState({"floor_no": 0,
-    "building_id": 1,
-    "door_name": 4,
-    "compliance_id": 1, "fire_rating_id": 1, "category_id": 1, "frame_id": 1,
-    "size": "size", "type_id": 1, "vision_lite": false, "transom_id": 1, "side_lite": false, 
-    "hinge_id": 1, "sweep_id": 1, "hinge_size": "100", "continous_hinge_id": 1, "pivot_id": 1, 
-    "auto_dr_btm_id": 1, "power_transfer_id": 1, "auto_operator_id":1, "closer_id" : 1,
-    "lockset_id": 1, "astragal_id" : 1, "electric_lockset_id": 1, "ao_wall_plate_id" : 1,
-    "coordinator_id" : 1, "cylinder_id": 1, "strike_id": 1, "flush_bolt_id": 1,
-    "exit_device_id": 1, "seal_id": 1, "stop_id": 1, "threshold_id": 1,
-    "mag_holder_id" : 1, "electric_exit_device": false,
-    "mullion": false, "trim_id": 1, "delay_egress_id": 1})
+    const [attributes, setAttributes] = useState({})
 
     var newObject;
 
@@ -59,7 +48,109 @@ const Format = (props) => {
 
     const handleAttributesCallback = (attributesData) => {        
         setAttributesBool("Hello")
-        console.log (attributes)
+        setAttributes(attributes => ({...attributes, ...attributesData}))
+        console.log ("attributedata data", attributes)
+    }
+
+    const handleAstragalCB = (newValue) => {
+        let val = {...attributes}
+        val["astragal_id"] = newValue
+        //setAttributes (...attributes, astragal_id=new)
+        setAttributes (attributes => ({...attributes, ...val}))
+    }
+    const handleComplianceCB = (newValue) => {
+        let val = {"compliance_id": newValue}
+        //setAttributes (...attributes, astragal_id=new)
+        setAttributes (attributes => ({...attributes, ...val}))
+        console.log(newValue, attributes["compliance_id"])
+    }
+    const handleStopCB = (newValue) => {
+        attributes["stop_id"] = newValue
+        console.log(newValue, attributes["stop_id"])
+    }
+    const handleMagHolderCB = (newValue) => {
+        attributes["mag_holder_id"] = newValue
+        console.log(newValue, attributes["mag_holder_id"])
+    }
+    const handleFlushBoltCB = (newValue) => {
+        attributes["flush_bolt_id"] = newValue
+        console.log(newValue, attributes["flush_bolt_id"])
+    }
+    const handleCoordinatorCB = (newValue) => {
+        attributes["coordinator_id"] = newValue
+        console.log(newValue, attributes["coordinator_id"])
+    }
+    const handleCloserCB = (newValue) => {
+        attributes["closer_id"] = newValue
+        console.log(newValue, attributes["closer_id"])
+    }
+    const handleCylinderCB = (newValue) => {
+        attributes["cylinder_id"] = newValue
+        console.log(newValue, attributes["cylinder_id"])
+    }
+    const handleDelayEgressCB = (newValue) => {
+        attributes["delay_egress_id"] = newValue
+        console.log(newValue, attributes["delay_egress_id"])
+    }
+    const handleTrimCB = (newValue) => {
+        attributes["trim_id"] = newValue
+        console.log(newValue, attributes["trim_id"])
+    }
+    const handleExitDeviceCB = (newValue) => {
+        attributes["delay_egress_id"] = newValue
+        console.log(newValue, attributes["delay_egress_id"])
+    }
+    const handleStrikeCB = (newValue) => {
+        attributes["strike_id"] = newValue
+        console.log(newValue, attributes["strike_id"])
+    }
+    const handleLockSetCB = (newValue) => {
+        attributes["lockset_id"] = newValue
+        console.log(newValue, attributes["lockset_id"])
+    }
+    const handleEletricLockSetCB = (newValue) => {
+        attributes["electric_lockset_id"] = newValue
+        console.log(newValue, attributes["electric_lockset_id"])
+    }
+    const handlePivotCB = (newValue) => {
+        attributes["pivot_id"] = newValue
+        console.log(newValue, attributes["pivot_id"])
+    }
+    const handleHingeCB = (newValue) => {
+        attributes["hinge_id"] = newValue
+        console.log(newValue, attributes["hinge_id"])
+    }
+    const handleContinuousHingeCB = (newValue) => {
+        attributes["continous_hinge_id"] = newValue
+        console.log(newValue, attributes["continous_hinge_id"])
+    }
+    const handleTransomCB = (newValue) => {
+        attributes["transom_id"] = newValue
+        console.log(newValue, attributes["transom_id"])
+    }
+    const handleTypeCB = (newValue) => {
+        attributes["type_id"] = newValue
+        console.log(newValue, attributes["type_id"])
+    }
+    const handleFrameCB = (newValue) => {
+        attributes["frame_id"] = newValue
+        console.log(newValue, attributes["frame_id"])
+    }
+    const handleFireRatingCB = (newValue) => {
+        attributes["fire_rating_id"] = newValue
+        console.log(newValue, attributes["fire_rating_id"])
+    }
+    const handleCategoryCB = (newValue) => {
+        attributes["category_id"] = newValue
+        console.log(newValue, attributes["category_id"])
+    }
+    const handlePowerTransferCB = (newValue) => {
+        attributes["power_transfer_id"] = newValue
+        console.log(newValue, attributes["power_transfer_id"])
+    }
+    
+    const handleSubmitCB = () => {
+        console.log ("submit data", attributes)
     }
 
     return(
@@ -83,35 +174,35 @@ const Format = (props) => {
             <div className='content-container'>
                 <div className='row'>
                     <div className='left-panel box'>
-                        <Compliance compliance_id = {attributes["compliance_id"]} />
-                        <DoorAstragal astragal_id = {attributes["astragal_id"]}/>
-                        <DoorStop stop_id = {attributes["stop_id"]}/>
-                        <DoorMagholder magholder_id = {attributes["mag_holder_id"]}/>
-                        <DoorFlushbolt flushbolt_id = {attributes["flush_bolt_id"]}/>
-                        <DoorCoordinator coordinator_id = {attributes["coordinator_id"]}/>
-                        <DoorCloser closer_id = {attributes["closer_id"]}/>
-                        <DoorCylinder cylinder_id = {attributes["cylinder_id"]}/>
-                        <DoorDelayegress delayegress_id = {attributes["delay_egress_id"]}/>
-                        <DoorTrim trim_id = {attributes["trim_id"]}/>
-                        <DoorExitdevice exitdevice_id = {attributes["exit_device_id"]}/>
-                        <DoorStrike strike_id = {attributes["strike_id"]}/>
+                        <Compliance compliance_id = {attributes["compliance_id"]} handler = {handleComplianceCB}/>
+                        <DoorAstragal astragal_id = {attributes["astragal_id"]} handler = {handleAstragalCB}/>
+                        <DoorStop stop_id = {attributes["stop_id"]} handler = {handleStopCB}/>
+                        <DoorMagholder magholder_id = {attributes["mag_holder_id"]} handler = {handleMagHolderCB}/>
+                        <DoorFlushbolt flushbolt_id = {attributes["flush_bolt_id"]} handler = {handleFlushBoltCB}/>
+                        <DoorCoordinator coordinator_id = {attributes["coordinator_id"]} handler = {handleCoordinatorCB}/>
+                        <DoorCloser closer_id = {attributes["closer_id"]} handler = {handleCloserCB}/>
+                        <DoorCylinder cylinder_id = {attributes["cylinder_id"]} handler = {handleCylinderCB}/>
+                        <DoorDelayegress delayegress_id = {attributes["delay_egress_id"]} handler = {handleDelayEgressCB}/>
+                        <DoorTrim trim_id = {attributes["trim_id"]} handler = {handleTrimCB}/>
+                        <DoorExitdevice exitdevice_id = {attributes["exit_device_id"]} handler = {handleExitDeviceCB}/>
+                        <DoorStrike strike_id = {attributes["strike_id"]} handler = {handleStrikeCB}/>
                     </div>
                     <div className='right-panel box'>
-                        <DoorElectriclockset electriclockset_id = {attributes["electric_lockset_id"]}/>
-                        <DoorLockset lockset_id = {attributes["lockset_id"]}/>
-                        <DoorPivot pivot_id = {attributes["pivot_id"]}/>
-                        <DoorHinge hinge_id = {attributes["hinge_id"]}/>
-                        <DoorContinuoushinge continuoushinge_id = {attributes["continous_hinge_id"]}/>
-                        <DoorTransom transom_id = {attributes["transom_id"]}/>
-                        <DoorType type_id = {attributes["type_id"]}/>
-                        <DoorFrame frame_id = {attributes["frame_id"]}/>
-                        <DoorFirerating firerating_id = {attributes["fire_rating_id"]}/>
-                        <DoorCategory category_id = {attributes["category_id"]}/>
-                        <DoorPowertransfer powertransfer_id = {attributes["power_transfer_id"]}/>
+                        <DoorElectriclockset electriclockset_id = {attributes["electric_lockset_id"]} handler = {handleEletricLockSetCB}/>
+                        <DoorLockset lockset_id = {attributes["lockset_id"]} handler = {handleLockSetCB}/>
+                        <DoorPivot pivot_id = {attributes["pivot_id"]} handler = {handlePivotCB}/>
+                        <DoorHinge hinge_id = {attributes["hinge_id"]} handler = {handleHingeCB}/>
+                        <DoorContinuoushinge continuoushinge_id = {attributes["continous_hinge_id"]} handler = {handleContinuousHingeCB}/>
+                        <DoorTransom transom_id = {attributes["transom_id"]} handler = {handleTransomCB}/>
+                        <DoorType type_id = {attributes["type_id"]} handler = {handleTypeCB}/>
+                        <DoorFrame frame_id = {attributes["frame_id"]} handler = {handleFrameCB}/>
+                        <DoorFirerating firerating_id = {attributes["fire_rating_id"]} handler = {handleFireRatingCB}/>
+                        <DoorCategory category_id = {attributes["category_id"]} handler = {handleCategoryCB}/>
+                        <DoorPowertransfer powertransfer_id = {attributes["power_transfer_id"]} handler = {handlePowerTransferCB}/>
                     </div>
                 </div>
+                <Button variant = 'contained' onClick={() => {handleSubmitCB ()}} >Submit</Button>
             </div>: <></>
-
         }
         </>
     );
