@@ -11,14 +11,15 @@ const Floor = (props) => {
     const [update, setUpdate] = useState(true)
     const [optionList, setOptionList] = useState([])
     const floorsId = useRef(null);
-
+    const [floor, setFloor] = useState (props.value)
 
     useEffect(() => {
         // fetchData();
-        if (update === true) {
-            fetchData();
-            setUpdate(false);
-        }
+        fetchData();
+    }, [props.value])
+
+    useEffect (() => {
+        fetchData ();
     }, [update])
 
     useEffect(() => {
@@ -38,7 +39,7 @@ const Floor = (props) => {
             })
             .then((response) => {
                 const { data } = response;
-                console.log('reponse= ', response);
+                console.log('reponse= ', props.value);
                 if (response.status === 200) {
                     setOptionList(prev => {
                         return [...data.result.floor_data]
@@ -60,12 +61,14 @@ const Floor = (props) => {
             "building_id": buildingId
         }).then(response => {
             floorsId.current.value = "";
-            setUpdate(true)
+            setUpdate(true);
         })
     }
 
 
     return (
+        <>
+        <h1></h1>
         <Dropdown>
             <Dropdown.Toggle variant="light" id="dropdown-basic"  >
                 {select}
@@ -95,6 +98,7 @@ const Floor = (props) => {
                 </Form>
             </Dropdown.Menu>
         </Dropdown>
+        </>
     );
 }
 

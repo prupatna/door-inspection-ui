@@ -2,7 +2,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { Button, FloatingLabel } from 'react-bootstrap';
+import {FloatingLabel } from 'react-bootstrap';
+import { Button } from '@mui/material';
 import Form from 'react-bootstrap/Form'
 import { useRef } from 'react';
 
@@ -62,43 +63,38 @@ const Building = (props) => {
 
     }
 
-    const handleChange = (bId) => {
-
-        // if (floor === true) {
-        props.setFloorActive(bId)
-        // setFloor(false)
-        // }
-
+    const handleChange = (event) => {
+        console.log ("debugging", typeof event)
+        for (let id in optionList) {
+            if (optionList[id]["name"] === event.target.value) {
+                console.log ("changed")
+                props.setFloorActive (optionList[id]["id"])
+            }
+        }
     }
     useEffect(() => {
-        console.log('optionList:', optionList)
     }, [optionList])
     return (
         <>
-        <Dropdown>
-            <Dropdown.Toggle variant="light" id="dropdown-basic" aria-label='building'>
-               {select}
-            </Dropdown.Toggle>
-            <Dropdown.Menu
-                disabled={false}
-            >
-                {
+            
+            <FloatingLabel label="Building">
+                <>
+                <Form.Select placeholder='SelectBuilding' onChange={handleChange}>
+                    {
                     (optionList !== undefined) ?
                         optionList.map((item) => (
-                            <Dropdown.Item key={item.id} value={item.name} onClick={(e) => {
-                                setSelected(item.name)
-                                // setFloor(true)
-                                handleChange(item.id)
-                            }} >
+                            <option key={item.id} value={item.name}>
                                 {item.name}
-                            </Dropdown.Item>
+                            </option>
                         ))
                         :
                         <></>
-                }
-                <Dropdown.Divider />
+                    }
                 
-                <Form>
+                </Form.Select>
+
+                {   2 == 3?
+                    <Form>
                     <FloatingLabel label="Building Name">
                         <Form.Control type="text" placeholder="Enter Building" ref={buildingref} />
                     </FloatingLabel>
@@ -111,10 +107,10 @@ const Building = (props) => {
                     <Button variant="primary" type="submit" onClick={(e) => addBuilding(e)}>
                         Submit
                     </Button>
-                </Form>
-                
-            </Dropdown.Menu>
-        </Dropdown>
+                </Form>:<></>
+                }
+                </>
+        </FloatingLabel>
         </>
     );
 }
