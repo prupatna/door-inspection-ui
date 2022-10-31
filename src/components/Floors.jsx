@@ -3,6 +3,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form'
 import { useRef } from 'react';
+import {FloatingLabel } from 'react-bootstrap';
 import axios from 'axios';
 
 
@@ -11,15 +12,14 @@ const Floor = (props) => {
     const [update, setUpdate] = useState(true)
     const [optionList, setOptionList] = useState([])
     const floorsId = useRef(null);
-    const [floor, setFloor] = useState (props.value)
+
 
     useEffect(() => {
         // fetchData();
-        fetchData();
-    }, [props.value])
-
-    useEffect (() => {
-        fetchData ();
+        if (update === true) {
+            fetchData();
+            setUpdate(false);
+        }
     }, [update])
 
     useEffect(() => {
@@ -39,7 +39,7 @@ const Floor = (props) => {
             })
             .then((response) => {
                 const { data } = response;
-                console.log('reponse= ', props.value);
+                console.log('reponse= ', response);
                 if (response.status === 200) {
                     setOptionList(prev => {
                         return [...data.result.floor_data]
@@ -61,14 +61,26 @@ const Floor = (props) => {
             "building_id": buildingId
         }).then(response => {
             floorsId.current.value = "";
-            setUpdate(true);
+            setUpdate(true)
         })
     }
 
 
     return (
         <>
-        <h1></h1>
+        <FloatingLabel label="Floors">
+                <Form.Select placeholder='Select Floor' onChange={handleChange}>
+                    {
+                    (optionList !== undefined) ?
+                        optionList.map((item) => (
+                            <option key={item.id} value={item.name}>
+                                {item.name}
+                            </option>
+                        ))
+                        :<></>
+                    }
+                </Form.Select>
+        </FloatingLabel>
         <Dropdown>
             <Dropdown.Toggle variant="light" id="dropdown-basic"  >
                 {select}
