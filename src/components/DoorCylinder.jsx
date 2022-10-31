@@ -72,13 +72,7 @@ const DoorCylinder= (props) => {
     }
 
     const handleChange = (bId) => {
-
-        // if (floor === true) {
-        //props.setFloorActive(bId)
-        // setFloor(false)
-        // setFloor(false)
-        // }
-
+        props.handler (bId)
     }
     useEffect(() => {
         console.log('optionList:', optionList)
