@@ -4,7 +4,8 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form'
 import { useRef } from 'react';
-
+import {FloatingLabel } from 'react-bootstrap';
+import '../HomePage.css'
 
 
 const Door = (props) =>{
@@ -14,6 +15,7 @@ const Door = (props) =>{
     const doorsId = useRef(null);
 
     const fetchData = () => {
+        console.log ("fetchiing data of doors", typeof props.building_value, typeof props.floor_value);
         axios
             .get('http://127.0.0.1:8000/api/lockshop/door', {
                 params: {
@@ -35,17 +37,21 @@ const Door = (props) =>{
             .catch((error) => console.log(error));
     };
 
-    const handleChange = (item) => {
-        props.setAttributesActive(item)
+    const handleChange = (event) => {
+
+        console.log (event.target.value, optionList);
+        for (let id in optionList) {
+            if (optionList[id]["door_name"] === event.target.value) {
+                props.setAttributesActive (optionList[id])
+            }
+        }
+
+        //props.setAttributesActive(item)
     }
 
     useEffect(() => {
-        // fetchData();
-        if (update === true) {
-            fetchData();
-            setUpdate(false);
-        }
-    }, [update])
+        fetchData();
+    }, [update, props.value])
 
 
     useEffect(() => {
@@ -78,35 +84,34 @@ const Door = (props) =>{
     }
 
     return (
-        <Dropdown>
-            <Dropdown.Toggle variant="light" id="dropdown-basic"  >
-                {select}
-            </Dropdown.Toggle>
-            <Dropdown.Menu
-                disabled={false}
-            >
-                {
-                    (optionList !== undefined) ?
-                        optionList.map((item) => (
-                            <Dropdown.Item key={item.door_no} value={item.door_name} onClick={(e) => {
-                                setSelected(item.door_name)
-                                handleChange(item)
-                            }} >
-                                {item.door_name}
-                            </Dropdown.Item>
-                        ))
-                        :
-                        <></>
-                }
-                <Dropdown.Divider />
-                <Form>
-                    <Form.Control type="text" placeholder="Enter Door" ref={doorsId} />
-                    <Button variant="primary" type="submit" onClick={(e) => addDoor(e)}>
-                        Submit
-                    </Button>
-                </Form>
-            </Dropdown.Menu>
-        </Dropdown>
+        <>
+        <div >
+            <div className='row'>
+                <div className='left-panel box'>
+                    <FloatingLabel label="Door">
+                        <Form.Select placeholder='Select Door' onChange={handleChange}>
+                            {
+                            (optionList !== undefined) ?
+                                optionList.map((item) => (
+                                    <option key={item.door_no} value={item.door_name}>
+                                        {item.door_name}
+                                    </option>
+                                )):<></>
+                            }
+                        </Form.Select>
+                    </FloatingLabel>
+                </div>
+                <div className='right-panel box'>
+                    <Form>
+                        <Form.Control type="number" placeholder="Create New Floor" ref={doorsId} />
+                        <Button variant="primary" type="submit" onClick={(e) => addDoor(e)}>
+                            Submit
+                        </Button>
+                    </Form>
+                </div>
+            </div>
+        </div>
+        </>
     );
 }
 

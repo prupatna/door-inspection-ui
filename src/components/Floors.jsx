@@ -24,8 +24,8 @@ const Floor = (props) => {
         console.log('optionList for building:', optionList)
     }, [optionList])
 
-    const handleChange = (dId) => {
-        props.setDoorActive(dId)
+    const handleChange = (event) => {
+        props.setDoorActive(event.target.value)
     }
 
     const fetchData = () => {
