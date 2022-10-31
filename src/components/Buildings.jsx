@@ -64,10 +64,8 @@ const Building = (props) => {
     }
 
     const handleChange = (event) => {
-        console.log ("debugging", typeof event)
         for (let id in optionList) {
             if (optionList[id]["name"] === event.target.value) {
-                console.log ("changed")
                 props.setFloorActive (optionList[id]["id"])
             }
         }

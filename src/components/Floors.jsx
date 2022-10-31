@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form'
 import { useRef } from 'react';
 import {FloatingLabel } from 'react-bootstrap';
 import axios from 'axios';
+import '../HomePage.css'
 
 
 const Floor = (props) => {
@@ -14,16 +15,13 @@ const Floor = (props) => {
     const floorsId = useRef(null);
 
 
-    useEffect(() => {
-        // fetchData();
-        if (update === true) {
-            fetchData();
-            setUpdate(false);
-        }
-    }, [update])
+    useEffect(() => {  
+        fetchData();
+        setUpdate (false);
+    }, [update, props.value])
 
     useEffect(() => {
-        console.log('optionList:', optionList)
+        console.log('optionList for building:', optionList)
     }, [optionList])
 
     const handleChange = (dId) => {
@@ -31,6 +29,7 @@ const Floor = (props) => {
     }
 
     const fetchData = () => {
+        console.log ("fetchiing data of floors");
         axios
             .get('http://127.0.0.1:8000/api/lockshop/floor', {
                 params: {
@@ -39,7 +38,6 @@ const Floor = (props) => {
             })
             .then((response) => {
                 const { data } = response;
-                console.log('reponse= ', response);
                 if (response.status === 200) {
                     setOptionList(prev => {
                         return [...data.result.floor_data]
@@ -68,48 +66,33 @@ const Floor = (props) => {
 
     return (
         <>
-        <FloatingLabel label="Floors">
-                <Form.Select placeholder='Select Floor' onChange={handleChange}>
-                    {
-                    (optionList !== undefined) ?
-                        optionList.map((item) => (
-                            <option key={item.id} value={item.name}>
-                                {item.name}
-                            </option>
-                        ))
-                        :<></>
-                    }
-                </Form.Select>
-        </FloatingLabel>
-        <Dropdown>
-            <Dropdown.Toggle variant="light" id="dropdown-basic"  >
-                {select}
-            </Dropdown.Toggle>
-            <Dropdown.Menu
-                disabled={false}
-            >
-                {
-                    (optionList !== undefined) ?
-                        optionList.map((item) => (
-                            <Dropdown.Item key={item.floor_no} value={item.floor_no} onClick={(e) => {
-                                setSelected(item.floor_no)
-                                handleChange(item.floor_no)
-                            }} >
-                                {item.floor_no}
-                            </Dropdown.Item>
-                        ))
-                        :
-                        <></>
-                }
-                <Dropdown.Divider />
-                <Form>
-                    <Form.Control type="number" placeholder="Enter Floors" ref={floorsId} />
-                    <Button variant="primary" type="submit" onClick={(e) => addFloor(e)}>
-                        Submit
-                    </Button>
-                </Form>
-            </Dropdown.Menu>
-        </Dropdown>
+        <div >
+            <div className='row'>
+                <div className='left-panel box'>
+                    <FloatingLabel label="Floors">
+                        <Form.Select placeholder='Select Floor' onChange={handleChange}>
+                            {
+                            (optionList !== undefined) ?
+                                optionList.map((item) => (
+                                    <option key={item.floor_no} value={item.floor_no}>
+                                        {item.floor_no}
+                                    </option>
+                                ))
+                                :<></>
+                            }
+                        </Form.Select>
+                    </FloatingLabel>
+                </div>
+                <div className='right-panel box'>
+                    <Form>
+                        <Form.Control type="number" placeholder="Create New Floor" ref={floorsId} />
+                        <Button variant="primary" type="submit" onClick={(e) => addFloor(e)}>
+                            Submit
+                        </Button>
+                    </Form>
+                </div>
+            </div>
+        </div>
         </>
     );
 }
