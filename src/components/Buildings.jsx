@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { Button } from 'react-bootstrap';
+import { Button, FloatingLabel } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form'
 import { useRef } from 'react';
 
@@ -74,8 +74,9 @@ const Building = (props) => {
         console.log('optionList:', optionList)
     }, [optionList])
     return (
+        <>
         <Dropdown>
-            <Dropdown.Toggle variant="light" id="dropdown-basic" >
+            <Dropdown.Toggle variant="light" id="dropdown-basic" aria-label='building'>
                {select}
             </Dropdown.Toggle>
             <Dropdown.Menu
@@ -96,16 +97,25 @@ const Building = (props) => {
                         <></>
                 }
                 <Dropdown.Divider />
+                
                 <Form>
-                    <Form.Control type="text" placeholder="Enter Building" ref={buildingref} />
-                    <Form.Control type="text" placeholder="Enter Code" ref={coderef} />
-                    <Form.Control type="number" placeholder="Enter Floors" ref={floorsref} />
+                    <FloatingLabel label="Building Name">
+                        <Form.Control type="text" placeholder="Enter Building" ref={buildingref} />
+                    </FloatingLabel>
+                    <FloatingLabel label="Building Code">
+                        <Form.Control type="text" placeholder="Enter Code" ref={coderef} />
+                    </FloatingLabel>
+                    <FloatingLabel label="Number of Floors">
+                        <Form.Control type="number" placeholder="Enter Floors" ref={floorsref} />
+                    </FloatingLabel>
                     <Button variant="primary" type="submit" onClick={(e) => addBuilding(e)}>
                         Submit
                     </Button>
                 </Form>
+                
             </Dropdown.Menu>
         </Dropdown>
+        </>
     );
 }
 
