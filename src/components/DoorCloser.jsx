@@ -74,9 +74,7 @@ const DoorCloser = (props) => {
     const handleChange = (bId) => {
         props.handler (bId)
     }
-    useEffect(() => {
-        console.log('optionList:', optionList)
-    }, [optionList])
+    
     return (
         <Dropdown>
             <Dropdown.Toggle variant="light" id="dropdown-basic"  >

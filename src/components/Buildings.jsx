@@ -70,8 +70,7 @@ const Building = (props) => {
             }
         }
     }
-    useEffect(() => {
-    }, [optionList])
+    
     return (
         <>
             

@@ -55,7 +55,7 @@ const Format = (props) => {
     const handleAstragalCB = (newValue) => {
         let val = {...attributes}
         val["astragal_id"] = newValue
-        //setAttributes (...attributes, astragal_id=new)
+        console.log ("astragal, ",attributes, newValue)
         setAttributes (attributes => ({...attributes, ...val}))
     }
     const handleComplianceCB = (newValue) => {

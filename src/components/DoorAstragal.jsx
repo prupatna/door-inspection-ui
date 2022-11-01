@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { Button } from 'react-bootstrap';
+import { Button, FloatingLabel } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form'
 import { useRef } from 'react';
 
@@ -71,46 +71,38 @@ const DoorAstragal = (props) => {
 
     }
 
-    const handleChange = (bId) => {
+    const handleChange = (event) => {
 
         // if (floor === true) {
         //props.setFloorActive(bId)
         // setFloor(false)
         // setFloor(false)
         // }
-
-        props.handler (bId)
+        setSelected (event.target.value)
+        for (let id in optionList) {
+            if (optionList[id]["type"] === event.target.value)
+                props.handler (optionList[id]["id"])
+        }
     }
     useEffect(() => {
         console.log('optionList:', optionList)
     }, [optionList])
     return (
-        <Dropdown>
-            <Dropdown.Toggle variant="light" id="dropdown-basic"  >
-                {select}
-            </Dropdown.Toggle>
-            <Dropdown.Menu
-                disabled={false}
-            >
-                {
+        <>
+            <FloatingLabel label="Astragal">
+                <Form.Select value={select} onChange={handleChange}>
+                    {
                     (optionList !== undefined) ?
                         optionList.map((item) => (
-                            <Dropdown.Item key={item.id} value={item.type} onClick={(e) => {
-                                setSelected(item.type)
-                                // setFloor(true)
-                                handleChange(item.id)
-                            }} >
+                            <option key={item.id} value={item.type}>
                                 {item.type}
-                            </Dropdown.Item>
-                        ))
-                        :
-                        <></>
-                }
-                <Dropdown.Divider />
-                <Form>
-                </Form>
-            </Dropdown.Menu>
-        </Dropdown>
+                            </option>
+                        )):<></>
+                    }
+                </Form.Select>
+            </FloatingLabel>
+        </>
+        
     );
 }
 
