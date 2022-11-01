@@ -20,10 +20,6 @@ const Floor = (props) => {
         setUpdate (false);
     }, [update, props.value])
 
-    useEffect(() => {
-        console.log('optionList for building:', optionList)
-    }, [optionList])
-
     const handleChange = (event) => {
         props.setDoorActive(event.target.value)
     }

@@ -103,7 +103,7 @@ const Door = (props) =>{
                 </div>
                 <div className='right-panel box'>
                     <Form>
-                        <Form.Control type="number" placeholder="Create New Floor" ref={doorsId} />
+                        <Form.Control type="text" placeholder="Create New Door" ref={doorsId} />
                         <Button variant="primary" type="submit" onClick={(e) => addDoor(e)}>
                             Submit
                         </Button>
