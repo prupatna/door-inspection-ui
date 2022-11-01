@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { Button } from 'react-bootstrap';
+import { Button, FloatingLabel } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form'
 import { useRef } from 'react';
 
@@ -71,39 +71,29 @@ const DoorFirerating = (props) => {
 
     }
 
-    const handleChange = (bId) => {
-        props.handler (bId)
+    const handleChange = (event) => {
+        setSelected (event.target.value)
+        for (let id in optionList) {
+            if (optionList[id]["name"] === event.target.value)
+                props.handler (optionList[id]["id"])
+        }
     }
-    useEffect(() => {
-        console.log('optionList:', optionList)
-    }, [optionList])
+    
     return (
-        <Dropdown>
-            <Dropdown.Toggle variant="light" id="dropdown-basic"  >
-                {select}
-            </Dropdown.Toggle>
-            <Dropdown.Menu
-                disabled={false}
-            >
-                {
+        <>
+            <FloatingLabel label="Fire Rating">
+                <Form.Select value={select} onChange={handleChange}>
+                    {
                     (optionList !== undefined) ?
                         optionList.map((item) => (
-                            <Dropdown.Item key={item.id} value={item.name} onClick={(e) => {
-                                setSelected(item.name)
-                                // setFloor(true)
-                                handleChange(item.id)
-                            }} >
+                            <option key={item.id} value={item.name}>
                                 {item.name}
-                            </Dropdown.Item>
-                        ))
-                        :
-                        <></>
-                }
-                <Dropdown.Divider />
-                <Form>
-                </Form>
-            </Dropdown.Menu>
-        </Dropdown>
+                            </option>
+                        )):<></>
+                    }
+                </Form.Select>
+            </FloatingLabel>
+        </>
     );
 }
 
