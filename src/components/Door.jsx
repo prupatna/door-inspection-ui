@@ -14,8 +14,30 @@ const Door = (props) =>{
     const [optionList, setOptionList] = useState([])
     const doorsId = useRef(null);
 
+    const fetchDataId = (door_id) => {
+        console.log ("request came param is", door_id)
+        axios
+            .get('http://127.0.0.1:8000/api/lockshop/door', {
+                params: {
+                    "building_id": props.building_value,
+                    "floor_no": props.floor_value,
+                    "door_no": door_id
+                }
+            })
+            .then((response) => {
+                const { data } = response;
+                console.log ("new response is", response)
+                if (response.status === 200) {
+                    props.setAttributesActive (data.result.door_data)
+                    
+                } else {
+                    setOptionList(['test'])
+                }
+            })
+            .catch((error) => console.log(error));
+    };
+
     const fetchData = () => {
-        console.log ("fetchiing data of doors", typeof props.building_value, typeof props.floor_value);
         axios
             .get('http://127.0.0.1:8000/api/lockshop/door', {
                 params: {
@@ -25,7 +47,6 @@ const Door = (props) =>{
             })
             .then((response) => {
                 const { data } = response;
-                console.log('Door reponse= ', response);
                 if (response.status === 200) {
                     setOptionList(prev => {
                         return [...data.result.door_data]  /*Change Value*/
@@ -38,21 +59,21 @@ const Door = (props) =>{
     };
 
     const handleChange = (event) => {
-
-        console.log (event.target.value, optionList);
-        for (let id in optionList) {
+        console.log ("door changed", event.target.value, optionList);
+        let newlist = optionList
+        for (let id in newlist) {
             if (optionList[id]["door_name"] === event.target.value) {
+                console.log ("updating attributes props")
+                fetchDataId (optionList[id]["door_no"])
                 props.setAttributesActive (optionList[id])
             }
         }
-
-        //props.setAttributesActive(item)
     }
 
     useEffect(() => {
         fetchData();
         setUpdate (false);
-    }, [update, props.value])
+    }, [update, props.floor_value, props.building_value])
 
     const addDoor = (e) => {
         e.preventDefault()
@@ -77,7 +98,6 @@ const Door = (props) =>{
             setSelected ("")
             setUpdate(true)
         })
-
     }
 
     return (
@@ -85,18 +105,18 @@ const Door = (props) =>{
         <div >
             <div className='row'>
                 <div className='left-panel box'>
-                    <FloatingLabel label="Door">
-                        <Form.Select placeholder='Select Door' onChange={handleChange}>
-                            {
-                            (optionList !== undefined) ?
-                                optionList.map((item) => (
-                                    <option key={item.door_no} value={item.door_name}>
-                                        {item.door_name}
-                                    </option>
-                                )):<></>
-                            }
-                        </Form.Select>
-                    </FloatingLabel>
+                        <FloatingLabel label="Door">
+                            <Form.Select placeholder='Select Door' onChange={handleChange}>
+                                {
+                                (optionList !== undefined) ?
+                                    optionList.map((item) => (
+                                        <option key={item.door_no} value={item.door_name}>
+                                            {item.door_name}
+                                        </option>
+                                    )):<></>
+                                }
+                            </Form.Select>
+                        </FloatingLabel>
                 </div>
                 <div className='right-panel box'>
                     <Form>
