@@ -54,11 +54,6 @@ const Door = (props) =>{
         setUpdate (false);
     }, [update, props.value])
 
-
-    useEffect(() => {
-        console.log('optionList:', optionList)
-    }, [optionList])
-
     const addDoor = (e) => {
         e.preventDefault()
         let doorId = doorsId.current.value
@@ -79,6 +74,7 @@ const Door = (props) =>{
         }
         }).then(response => {
             doorsId.current.value = "";
+            setSelected ("")
             setUpdate(true)
         })
 
