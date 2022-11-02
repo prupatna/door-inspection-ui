@@ -25,7 +25,7 @@ const Door = (props) =>{
             })
             .then((response) => {
                 const { data } = response;
-                console.log('reponse= ', response);
+                console.log('Door reponse= ', response);
                 if (response.status === 200) {
                     setOptionList(prev => {
                         return [...data.result.door_data]  /*Change Value*/
@@ -51,6 +51,7 @@ const Door = (props) =>{
 
     useEffect(() => {
         fetchData();
+        setUpdate (false);
     }, [update, props.value])
 
 

@@ -28,26 +28,27 @@ import DoorPowertransfer from './DoorPowerTransfer';
 import Button from '@mui/material/Button';
 import '../HomePage.css'
 import { ButtonBase, ButtonGroup } from '@mui/material';
+import axios from 'axios';
 
 const Format = (props) => {
 
 
     const [floor, setFloor] = useState("")
     const [door,setDoor] = useState("")
-    const[attributesBool, setAttributesBool] = useState ("")
     const [attributes, setAttributes] = useState({})
 
-    var newObject;
 
     const handleFloorCallback = (floorData) => {
         setFloor(floorData)
+        setDoor ("")
+        setAttributes ({})
     }
     const handleDoorCallback = (doorData) =>{
         setDoor(doorData)
+        setAttributes ({})
     }
 
     const handleAttributesCallback = (attributesData) => {        
-        setAttributesBool("Hello")
         setAttributes(attributes => ({...attributes, ...attributesData}))
         console.log ("attributedata data", attributes)
     }
@@ -150,7 +151,14 @@ const Format = (props) => {
     }
     
     const handleSubmitCB = () => {
-        console.log ("submit data", attributes)
+        axios.put('http://127.0.0.1:8000/api/lockshop/door', {
+            "data": attributes
+        }).then(response => {
+            console.log ("Modification done", attributes)
+            setFloor("")
+            setDoor ("")
+            setAttributes ({})
+        })
     }
 
     return(
@@ -170,7 +178,7 @@ const Format = (props) => {
             }
         </div>
         {
-            (attributesBool !== "")?
+            (Object.keys(attributes).length !== 0)?
             <div className='content-container'>
                 <div className='row'>
                     <div className='left-panel box'>
