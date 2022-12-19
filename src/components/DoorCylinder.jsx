@@ -15,7 +15,7 @@ const DoorCylinder= (props) => {
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/doorcylinder', {
+            .get('http://127.0.0.1:5000/api/lockshop/doorcylinder', {
             })
             .then((response) => {
                 const { data } = response;
@@ -33,7 +33,7 @@ const DoorCylinder= (props) => {
 
     const fetchDataId = () => {
         axios
-        .get('http://127.0.0.1:8000/api/lockshop/doorcylinder', {
+        .get('http://127.0.0.1:5000/api/lockshop/doorcylinder', {
             params: {
                 "id": props.cylinder_id
             }
@@ -62,7 +62,7 @@ const DoorCylinder= (props) => {
         e.preventDefault()
         let cylinderName = cylinderref.current.value
         
-        axios.post('http://127.0.0.1:8000/api/lockshop/doorcylinder', {
+        axios.post('http://127.0.0.1:5000/api/lockshop/doorcylinder', {
             "name": cylinderName,
         }).then(response => {
             cylinderref.current.value = "";

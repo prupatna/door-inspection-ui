@@ -17,7 +17,7 @@ const Door = (props) =>{
     const fetchDataId = (door_id) => {
         console.log ("request came param is", door_id)
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/door', {
+            .get('http://127.0.0.1:5000/api/lockshop/door', {
                 params: {
                     "building_id": props.building_value,
                     "floor_no": props.floor_value,
@@ -39,7 +39,7 @@ const Door = (props) =>{
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/door', {
+            .get('http://127.0.0.1:5000/api/lockshop/door', {
                 params: {
                     "building_id": props.building_value,
                     "floor_no": props.floor_value
@@ -79,7 +79,7 @@ const Door = (props) =>{
         e.preventDefault()
         let doorId = doorsId.current.value
         console.log(doorId)
-        axios.post('http://127.0.0.1:8000/api/lockshop/door', {
+        axios.post('http://127.0.0.1:5000/api/lockshop/door', {
             "data": {"floor_no": props.floor_value,
             "building_id": props.building_value,
             "door_name": doorId,

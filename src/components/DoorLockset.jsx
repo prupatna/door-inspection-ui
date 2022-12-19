@@ -15,7 +15,7 @@ const DoorLockset = (props) => {
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/doorlockset', {
+            .get('http://127.0.0.1:5000/api/lockshop/doorlockset', {
             })
             .then((response) => {
                 const { data } = response;
@@ -33,7 +33,7 @@ const DoorLockset = (props) => {
 
     const fetchDataId = () => {
         axios
-        .get('http://127.0.0.1:8000/api/lockshop/doorlockset', {
+        .get('http://127.0.0.1:5000/api/lockshop/doorlockset', {
             params: {
                 "id": props.lockset_id
             }
@@ -62,7 +62,7 @@ const DoorLockset = (props) => {
         e.preventDefault()
         let locksetName = locksetref.current.value
         
-        axios.post('http://127.0.0.1:8000/api/lockshop/doorlockset', {
+        axios.post('http://127.0.0.1:5000/api/lockshop/doorlockset', {
             "type": locksetName,
         }).then(response => {
             locksetref.current.value = "";

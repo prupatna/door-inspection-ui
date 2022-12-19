@@ -15,7 +15,7 @@ const DoorElectroniclockset= (props) => {
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/doorelectroniclockset', {
+            .get('http://127.0.0.1:5000/api/lockshop/doorelectroniclockset', {
             })
             .then((response) => {
                 const { data } = response;
@@ -33,7 +33,7 @@ const DoorElectroniclockset= (props) => {
 
     const fetchDataId = () => {
         axios
-        .get('http://127.0.0.1:8000/api/lockshop/doorelectroniclockset', {
+        .get('http://127.0.0.1:5000/api/lockshop/doorelectroniclockset', {
             params: {
                 "id": props.electriclockset_id
             }
@@ -62,7 +62,7 @@ const DoorElectroniclockset= (props) => {
         e.preventDefault()
         let electroniclocksettype = electroniclocksetref.current.value
         
-        axios.post('http://127.0.0.1:8000/api/lockshop/doorelectroniclockset', {
+        axios.post('http://127.0.0.1:5000/api/lockshop/doorelectroniclockset', {
             "type": electroniclocksettype,
         }).then(response => {
             electroniclocksetref.current.value = "";

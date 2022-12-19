@@ -15,7 +15,7 @@ const DoorCloser = (props) => {
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/doorcloser', {
+            .get('http://127.0.0.1:5000/api/lockshop/doorcloser', {
             })
             .then((response) => {
                 const { data } = response;
@@ -33,7 +33,7 @@ const DoorCloser = (props) => {
 
     const fetchDataId = () => {
         axios
-        .get('http://127.0.0.1:8000/api/lockshop/doorcloser', {
+        .get('http://127.0.0.1:5000/api/lockshop/doorcloser', {
             params: {
                 "id": props.closer_id
             }
@@ -62,7 +62,7 @@ const DoorCloser = (props) => {
         e.preventDefault()
         let closerName = closerref.current.value
         
-        axios.post('http://127.0.0.1:8000/api/lockshop/doorcloser', {
+        axios.post('http://127.0.0.1:5000/api/lockshop/doorcloser', {
             "name": closerName,
         }).then(response => {
             closerref.current.value = "";

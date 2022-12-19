@@ -15,7 +15,7 @@ const DoorCoordinator = (props) => {
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/doorcoordinator', {
+            .get('http://127.0.0.1:5000/api/lockshop/doorcoordinator', {
             })
             .then((response) => {
                 const { data } = response;
@@ -33,7 +33,7 @@ const DoorCoordinator = (props) => {
 
     const fetchDataId = () => {
         axios
-        .get('http://127.0.0.1:8000/api/lockshop/doorcoordinator', {
+        .get('http://127.0.0.1:5000/api/lockshop/doorcoordinator', {
             params: {
                 "id": props.coordinator_id
             }
@@ -62,7 +62,7 @@ const DoorCoordinator = (props) => {
         e.preventDefault()
         let coordinatorName = coordinatorref.current.value
         
-        axios.post('http://127.0.0.1:8000/api/lockshop/doorcoordinator', {
+        axios.post('http://127.0.0.1:5000/api/lockshop/doorcoordinator', {
             "type": coordinatorName,
         }).then(response => {
             coordinatorref.current.value = "";

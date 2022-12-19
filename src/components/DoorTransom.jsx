@@ -15,7 +15,7 @@ const DoorTransom = (props) => {
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/doortransom', {
+            .get('http://127.0.0.1:5000/api/lockshop/doortransom', {
             })
             .then((response) => {
                 const { data } = response;
@@ -33,7 +33,7 @@ const DoorTransom = (props) => {
 
     const fetchDataId = () => {
         axios
-        .get('http://127.0.0.1:8000/api/lockshop/doortransom', {
+        .get('http://127.0.0.1:5000/api/lockshop/doortransom', {
             params: {
                 "id": props.transom_id
             }
@@ -62,7 +62,7 @@ const DoorTransom = (props) => {
         e.preventDefault()
         let transommaterial = transomref.current.value
         
-        axios.post('http://127.0.0.1:8000/api/lockshop/doortransom', {
+        axios.post('http://127.0.0.1:5000/api/lockshop/doortransom', {
             "material": transommaterial,
         }).then(response => {
             transomref.current.value = "";

@@ -16,7 +16,7 @@ const DoorCategory = (props) => {
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/doorcategory', {
+            .get('http://127.0.0.1:5000/api/lockshop/doorcategory', {
             })
             .then((response) => {
                 const { data } = response;
@@ -34,7 +34,7 @@ const DoorCategory = (props) => {
 
     const fetchDataId = () => {
         axios
-        .get('http://127.0.0.1:8000/api/lockshop/doorcategory', {
+        .get('http://127.0.0.1:5000/api/lockshop/doorcategory', {
             params: {
                 "id": props.category_id
             }
@@ -63,7 +63,7 @@ const DoorCategory = (props) => {
         e.preventDefault()
         let categoryName = categoryref.current.value
         
-        axios.post('http://127.0.0.1:8000/api/lockshop/doorcategory', {
+        axios.post('http://127.0.0.1:5000/api/lockshop/doorcategory', {
             "name": categoryName,
         }).then(response => {
             categoryref.current.value = "";

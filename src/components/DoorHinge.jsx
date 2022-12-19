@@ -15,7 +15,7 @@ const DoorHinge = (props) => {
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/doorhinge', {
+            .get('http://127.0.0.1:5000/api/lockshop/doorhinge', {
             })
             .then((response) => {
                 const { data } = response;
@@ -33,7 +33,7 @@ const DoorHinge = (props) => {
 
     const fetchDataId = () => {
         axios
-        .get('http://127.0.0.1:8000/api/lockshop/doorhinge', {
+        .get('http://127.0.0.1:5000/api/lockshop/doorhinge', {
             params: {
                 "id": props.hinge_id
             }
@@ -62,7 +62,7 @@ const DoorHinge = (props) => {
         e.preventDefault()
         let hingeName = hingeref.current.value
         
-        axios.post('http://127.0.0.1:8000/api/lockshop/doorhinge', {
+        axios.post('http://127.0.0.1:5000/api/lockshop/doorhinge', {
             "type": hingeName,
         }).then(response => {
             hingeref.current.value = "";

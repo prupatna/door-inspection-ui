@@ -15,7 +15,7 @@ const DoorPowertransfer = (props) => {
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/doorpowertransfer', {
+            .get('http://127.0.0.1:5000/api/lockshop/doorpowertransfer', {
             })
             .then((response) => {
                 const { data } = response;
@@ -33,7 +33,7 @@ const DoorPowertransfer = (props) => {
 
     const fetchDataId = () => {
         axios
-        .get('http://127.0.0.1:8000/api/lockshop/doorpowertransfer', {
+        .get('http://127.0.0.1:5000/api/lockshop/doorpowertransfer', {
             params: {
                 "id": props.powertransfer_id
             }
@@ -62,7 +62,7 @@ const DoorPowertransfer = (props) => {
         e.preventDefault()
         let powertransferName = powertransferref.current.value
         
-        axios.post('http://127.0.0.1:8000/api/lockshop/doorpowertransfer', {
+        axios.post('http://127.0.0.1:5000/api/lockshop/doorpowertransfer', {
             "type": powertransferName,
         }).then(response => {
             powertransferref.current.value = "";

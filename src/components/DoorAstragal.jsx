@@ -15,7 +15,7 @@ const DoorAstragal = (props) => {
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/doorastragal', {
+            .get('http://127.0.0.1:5000/api/lockshop/doorastragal', {
             })
             .then((response) => {
                 const { data } = response;
@@ -33,7 +33,7 @@ const DoorAstragal = (props) => {
 
     const fetchDataId = () => {
         axios
-        .get('http://127.0.0.1:8000/api/lockshop/doorastragal', {
+        .get('http://127.0.0.1:5000/api/lockshop/doorastragal', {
             params: {
                 "id": props.astragal_id
             }
@@ -62,7 +62,7 @@ const DoorAstragal = (props) => {
         e.preventDefault()
         let astragalName = astragalref.current.value
         
-        axios.post('http://127.0.0.1:8000/api/lockshop/doorastragal', {
+        axios.post('http://127.0.0.1:5000/api/lockshop/doorastragal', {
             "type": astragalName,
         }).then(response => {
             astragalref.current.value = "";

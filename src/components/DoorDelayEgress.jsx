@@ -15,7 +15,7 @@ const DoorDelayegress = (props) => {
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/doordelayegress', {
+            .get('http://127.0.0.1:5000/api/lockshop/doordelayegress', {
             })
             .then((response) => {
                 const { data } = response;
@@ -33,7 +33,7 @@ const DoorDelayegress = (props) => {
 
     const fetchDataId = () => {
         axios
-        .get('http://127.0.0.1:8000/api/lockshop/doordelayegress', {
+        .get('http://127.0.0.1:5000/api/lockshop/doordelayegress', {
             params: {
                 "id": props.delayegress_id
             }
@@ -62,7 +62,7 @@ const DoorDelayegress = (props) => {
         e.preventDefault()
         let delayegressName = delayegressref.current.value
         
-        axios.post('http://127.0.0.1:8000/api/lockshop/doordelayegress', {
+        axios.post('http://127.0.0.1:5000/api/lockshop/doordelayegress', {
             "type": delayegressName,
         }).then(response => {
             delayegressref.current.value = "";

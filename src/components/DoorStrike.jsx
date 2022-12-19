@@ -15,7 +15,7 @@ const DoorStrike = (props) => {
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/doorstrike', {
+            .get('http://127.0.0.1:5000/api/lockshop/doorstrike', {
             })
             .then((response) => {
                 const { data } = response;
@@ -33,7 +33,7 @@ const DoorStrike = (props) => {
 
     const fetchDataId = () => {
         axios
-        .get('http://127.0.0.1:8000/api/lockshop/doorstrike', {
+        .get('http://127.0.0.1:5000/api/lockshop/doorstrike', {
             params: {
                 "id": props.strike_id
             }
@@ -62,7 +62,7 @@ const DoorStrike = (props) => {
         e.preventDefault()
         let strikeName = strikeref.current.value
         
-        axios.post('http://127.0.0.1:8000/api/lockshop/doorstrike', {
+        axios.post('http://127.0.0.1:5000/api/lockshop/doorstrike', {
             "type": strikeName,
         }).then(response => {
             strikeref.current.value = "";

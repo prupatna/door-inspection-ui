@@ -29,7 +29,8 @@ import Button from '@mui/material/Button';
 import '../HomePage.css'
 import { ButtonBase, ButtonGroup } from '@mui/material';
 import axios from 'axios';
-
+import DoorFrontImage from './DoorFrontImage';
+import DoorPicture from './DoorPicture'
 const Format = (props) => {
 
 
@@ -150,8 +151,16 @@ const Format = (props) => {
         console.log(newValue, attributes["power_transfer_id"])
     }
     
+    const handlePicture = (event) => {
+        var picture_file = event.target.files[0];
+        console.log(typeof picture_file)
+        attributes["picture"] = picture_file
+        console.log('New picture ', attributes["picture"])
+    }
+
     const handleSubmitCB = () => {
-        axios.put('http://127.0.0.1:8000/api/lockshop/door', {
+        console.log("picture just before submit ", attributes["picture"])
+        axios.put('http://127.0.0.1:5000/api/lockshop/door', {
             "data": attributes
         }).then(response => {
             console.log ("Modification done", attributes)
@@ -194,6 +203,8 @@ const Format = (props) => {
                         <DoorTrim trim_id = {attributes["trim_id"]} handler = {handleTrimCB}/>
                         <DoorExitdevice exitdevice_id = {attributes["exit_device_id"]} handler = {handleExitDeviceCB}/>
                         <DoorStrike strike_id = {attributes["strike_id"]} handler = {handleStrikeCB}/>
+                        <input type="file" name="frontimage" onChange={handlePicture} />
+                        {/* <DoorPicture picture = {attributes["picture"]}></DoorPicture> */}
                     </div>
                     <div className='right-panel box'>
                         <DoorElectriclockset electriclockset_id = {attributes["electric_lockset_id"]} handler = {handleEletricLockSetCB}/>

@@ -15,7 +15,7 @@ const DoorFlushbolt = (props) => {
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/doorflushbolt', {
+            .get('http://127.0.0.1:5000/api/lockshop/doorflushbolt', {
             })
             .then((response) => {
                 const { data } = response;
@@ -33,7 +33,7 @@ const DoorFlushbolt = (props) => {
 
     const fetchDataId = () => {
         axios
-        .get('http://127.0.0.1:8000/api/lockshop/doorflushbolt', {
+        .get('http://127.0.0.1:5000/api/lockshop/doorflushbolt', {
             params: {
                 "id": props.flushbolt_id
             }
@@ -62,7 +62,7 @@ const DoorFlushbolt = (props) => {
         e.preventDefault()
         let flushboltName = flushboltref.current.value
         
-        axios.post('http://127.0.0.1:8000/api/lockshop/doorflushbolt', {
+        axios.post('http://127.0.0.1:5000/api/lockshop/doorflushbolt', {
             "type": flushboltName,
         }).then(response => {
             flushboltref.current.value = "";

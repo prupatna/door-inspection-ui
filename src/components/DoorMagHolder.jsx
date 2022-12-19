@@ -15,7 +15,7 @@ const DoorMagholder = (props) => {
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/doormagholder', {
+            .get('http://127.0.0.1:5000/api/lockshop/doormagholder', {
             })
             .then((response) => {
                 const { data } = response;
@@ -33,7 +33,7 @@ const DoorMagholder = (props) => {
 
     const fetchDataId = () => {
         axios
-        .get('http://127.0.0.1:8000/api/lockshop/doormagholder', {
+        .get('http://127.0.0.1:5000/api/lockshop/doormagholder', {
             params: {
                 "id": props.magholder_id
             }
@@ -62,7 +62,7 @@ const DoorMagholder = (props) => {
         e.preventDefault()
         let magholderName = magholderref.current.value
         
-        axios.post('http://127.0.0.1:8000/api/lockshop/doormagholder', {
+        axios.post('http://127.0.0.1:5000/api/lockshop/doormagholder', {
             "type": magholderName,
         }).then(response => {
             magholderref.current.value = "";

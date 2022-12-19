@@ -15,7 +15,7 @@ const DoorStop = (props) => {
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/doorstop', {
+            .get('http://127.0.0.1:5000/api/lockshop/doorstop', {
             })
             .then((response) => {
                 const { data } = response;
@@ -33,7 +33,7 @@ const DoorStop = (props) => {
 
     const fetchDataId = () => {
         axios
-        .get('http://127.0.0.1:8000/api/lockshop/doorstop', {
+        .get('http://127.0.0.1:5000/api/lockshop/doorstop', {
             params: {
                 "id": props.stop_id
             }
@@ -62,7 +62,7 @@ const DoorStop = (props) => {
         e.preventDefault()
         let stopName = stopref.current.value
         
-        axios.post('http://127.0.0.1:8000/api/lockshop/doorstop', {
+        axios.post('http://127.0.0.1:5000/api/lockshop/doorstop', {
             "type": stopName,
         }).then(response => {
             stopref.current.value = "";

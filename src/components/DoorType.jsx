@@ -15,7 +15,7 @@ const DoorType = (props) => {
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/doortype', {
+            .get('http://127.0.0.1:5000/api/lockshop/doortype', {
             })
             .then((response) => {
                 const { data } = response;
@@ -33,7 +33,7 @@ const DoorType = (props) => {
 
     const fetchDataId = () => {
         axios
-        .get('http://127.0.0.1:8000/api/lockshop/doortype', {
+        .get('http://127.0.0.1:5000/api/lockshop/doortype', {
             params: {
                 "id": props.type_id
             }
@@ -62,7 +62,7 @@ const DoorType = (props) => {
         e.preventDefault()
         let typeName = typeref.current.value
         
-        axios.post('http://127.0.0.1:8000/api/lockshop/doortype', {
+        axios.post('http://127.0.0.1:5000/api/lockshop/doortype', {
             "name": typeName,
         }).then(response => {
             typeref.current.value = "";

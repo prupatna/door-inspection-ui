@@ -16,7 +16,7 @@ const DoorTrim= (props) => {
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/doortrim', {
+            .get('http://127.0.0.1:5000/api/lockshop/doortrim', {
             })
             .then((response) => {
                 const { data } = response;
@@ -34,7 +34,7 @@ const DoorTrim= (props) => {
 
     const fetchDataId = () => {
         axios
-        .get('http://127.0.0.1:8000/api/lockshop/doortrim', {
+        .get('http://127.0.0.1:5000/api/lockshop/doortrim', {
             params: {
                 "id": props.trim_id
             }
@@ -63,7 +63,7 @@ const DoorTrim= (props) => {
         e.preventDefault()
         let trimName = trimref.current.value
         
-        axios.post('http://127.0.0.1:8000/api/lockshop/doortrim', {
+        axios.post('http://127.0.0.1:5000/api/lockshop/doortrim', {
             "name": trimName,
         }).then(response => {
             trimref.current.value = "";

@@ -15,7 +15,7 @@ const DoorFrame= (props) => {
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/doorframe', {
+            .get('http://127.0.0.1:5000/api/lockshop/doorframe', {
             })
             .then((response) => {
                 const { data } = response;
@@ -33,7 +33,7 @@ const DoorFrame= (props) => {
 
     const fetchDataId = () => {
         axios
-        .get('http://127.0.0.1:8000/api/lockshop/doorframe', {
+        .get('http://127.0.0.1:5000/api/lockshop/doorframe', {
             params: {
                 "id": props.frame_id
             }
@@ -62,7 +62,7 @@ const DoorFrame= (props) => {
         e.preventDefault()
         let framematerial = frameref.current.value
         
-        axios.post('http://127.0.0.1:8000/api/lockshop/doorframe', {
+        axios.post('http://127.0.0.1:5000/api/lockshop/doorframe', {
             "material": framematerial,
         }).then(response => {
             frameref.current.value = "";

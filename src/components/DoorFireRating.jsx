@@ -15,7 +15,7 @@ const DoorFirerating = (props) => {
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/doorfirerating', {
+            .get('http://127.0.0.1:5000/api/lockshop/doorfirerating', {
             })
             .then((response) => {
                 const { data } = response;
@@ -33,7 +33,7 @@ const DoorFirerating = (props) => {
 
     const fetchDataId = () => {
         axios
-        .get('http://127.0.0.1:8000/api/lockshop/doorfirerating', {
+        .get('http://127.0.0.1:5000/api/lockshop/doorfirerating', {
             params: {
                 "id": props.firerating_id
             }
@@ -62,7 +62,7 @@ const DoorFirerating = (props) => {
         e.preventDefault()
         let fireratingName = fireratingref.current.value
         
-        axios.post('http://127.0.0.1:8000/api/lockshop/doorfirerating', {
+        axios.post('http://127.0.0.1:5000/api/lockshop/doorfirerating', {
             "name": fireratingName,
         }).then(response => {
             fireratingref.current.value = "";

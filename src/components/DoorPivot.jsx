@@ -15,7 +15,7 @@ const DoorPivot = (props) => {
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/doorpivot', {
+            .get('http://127.0.0.1:5000/api/lockshop/doorpivot', {
             })
             .then((response) => {
                 const { data } = response;
@@ -33,7 +33,7 @@ const DoorPivot = (props) => {
 
     const fetchDataId = () => {
         axios
-        .get('http://127.0.0.1:8000/api/lockshop/doorpivot', {
+        .get('http://127.0.0.1:5000/api/lockshop/doorpivot', {
             params: {
                 "id": props.pivot_id
             }
@@ -62,7 +62,7 @@ const DoorPivot = (props) => {
         e.preventDefault()
         let pivotName = pivotref.current.value
         
-        axios.post('http://127.0.0.1:8000/api/lockshop/doorpivot', {
+        axios.post('http://127.0.0.1:5000/api/lockshop/doorpivot', {
             "type": pivotName,
         }).then(response => {
             pivotref.current.value = "";

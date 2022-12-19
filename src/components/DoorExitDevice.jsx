@@ -15,7 +15,7 @@ const DoorExitdevice= (props) => {
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/doorexitdevice', {
+            .get('http://127.0.0.1:5000/api/lockshop/doorexitdevice', {
             })
             .then((response) => {
                 const { data } = response;
@@ -33,7 +33,7 @@ const DoorExitdevice= (props) => {
 
     const fetchDataId = () => {
         axios
-        .get('http://127.0.0.1:8000/api/lockshop/doorexitdevice', {
+        .get('http://127.0.0.1:5000/api/lockshop/doorexitdevice', {
             params: {
                 "id": props.exitdevice_id
             }
@@ -62,7 +62,7 @@ const DoorExitdevice= (props) => {
         e.preventDefault()
         let exitdeviceName = exitdeviceref.current.value
         
-        axios.post('http://127.0.0.1:8000/api/lockshop/doorexitdevice', {
+        axios.post('http://127.0.0.1:5000/api/lockshop/doorexitdevice', {
             "name": exitdeviceName,
         }).then(response => {
             exitdeviceref.current.value = "";

@@ -16,7 +16,7 @@ const Building = (props) => {
 
     const fetchData = () => {
         axios
-            .get('http://127.0.0.1:8000/api/lockshop/building', {
+            .get('http://127.0.0.1:5000/api/lockshop/building', {
                 headers: {
                     'Access-Control-Allow-Origin': '*'
                 }
@@ -48,7 +48,7 @@ const Building = (props) => {
         // let codeName = coderef.current.value
         let floorNumber = floorsref.current.value
 
-        axios.post('http://127.0.0.1:8000/api/lockshop/building', {
+        axios.post('http://127.0.0.1:5000/api/lockshop/building', {
             "name": buildingName,
             "code": buildingName,
             "no_of_floors": floorNumber
